@@ -1,0 +1,302 @@
+:root {
+    --primary-color: #ff7f50;
+    --secondary-color: #ff4500;
+    --text-color: #ffffff;
+    --background-gradient: linear-gradient(to bottom, rgba(255, 127, 80, 0.7), rgba(255, 69, 0, 0.7));
+    --font-family: 'Arial', sans-serif;
+    --heading-font-size: 3.5rem;
+    --subheading-font-size: 1.8rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+section {
+    scroll-snap-align: start;
+    height: 100vh;
+    color: var(--text-color);
+    background: var(--background-gradient);
+    text-align: left;
+    position: relative;
+}
+
+/* Animación de fondos para las secciones */
+@keyframes gradient-move-left {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+@keyframes gradient-move-right {
+    0% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* Section 1: Grid Layout */
+section:first-of-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    justify-items: start;
+    align-content: center;
+    background-image: linear-gradient(rgba(255, 127, 80, 0.7), rgba(255, 68, 0, 0.582)), url('../img/desierto.jpg');
+    background-size: 120% 120%; /* Aumentamos el tamaño para que se note el movimiento */
+    background-position: 0% 0%;
+    animation: gradient-move-left 8s infinite alternate; /* Animación aplicada */
+    padding: 50px;
+}
+
+
+.title-container {
+    display: grid; 
+    grid-template-rows: auto auto; 
+    justify-content: start; 
+    align-content: center; 
+    height: 100%; 
+    padding-left: 50px; 
+    color: var(--text-color);
+}
+
+
+.social-icons {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-icons a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.social-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: var(--text-color);
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 1.5s infinite;
+}
+
+.arrow svg {
+    width: 30px;
+    height: 30px;
+    fill: var(--text-color);
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.cta-button {
+    position: absolute;
+    bottom: 50px;
+    left: 46%;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Section 2: Flexbox Layout */
+section.flex-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(rgba(255, 127, 80, 0.7), rgba(255, 69, 0, 0.7)), url('../img/botella.jpg');
+    background-size: 120% 120%; /* Igual que la primera sección */
+    background-position: 100% 100%;
+    animation: gradient-move-right 8s infinite alternate; /* Animación aplicada */
+    padding: 50px;
+    height: 100vh;
+    gap: 20px;
+}
+
+.text-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.form-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    max-width: 500px;
+}
+
+.form-content {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, select, textarea, button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor principal para Snap Scroll */
+.contenedor_maestro {
+    width: 100%;
+    height: 100vh; /* Asegura que ocupa toda la pantalla */
+    overflow-y: scroll; /* Activa el scroll vertical */
+    scroll-snap-type: y mandatory; /* Ancla el scroll a cada sección */
+    padding: 0; /* Elimina el padding para un desplazamiento preciso */
+    margin: 0;
+}
+
+/* Secciones individuales */
+header.portada,
+section.contacto {
+    scroll-snap-align: start; /* Ancla cada sección al inicio del viewport */
+    width: 100%;
+    height: 100vh; /* Cada sección ocupa toda la pantalla */
+}
+
+header.portada {
+    background-image: linear-gradient(rgba(255, 127, 80, 0.7), rgba(255, 69, 0, 0.7)), url('../images/desierto.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: gradient-move-left 8s infinite alternate;
+    color: var(--text-color);
+}
+
+
+section.contacto {
+    background-color: aqua;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    section:first-of-type {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+        text-align: center;
+        padding: 20px;
+    }
+
+    section.flex-section {
+        flex-direction: column; /* Alinea el contenido verticalmente */
+        gap: 15px;
+    }
+
+    .text-container {
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .form-container {
+        max-width: 100%; /* Ajusta el ancho al 100% */
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Reduce el tamaño del título */
+    }
+
+    p {
+        font-size: 1.2rem; /* Reduce el tamaño del párrafo */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 16px;
+    }
+
+    input, select, textarea, button {
+        padding: 8px;
+    }
+}
+
+
